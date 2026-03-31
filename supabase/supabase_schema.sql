@@ -6,6 +6,7 @@ create extension if not exists "pgcrypto";
 create table organizations (
   id uuid primary key default gen_random_uuid(),
   name text not null,
+  created_by uuid references auth.users(id),
   created_at timestamptz default now()
 );
 
@@ -44,11 +45,8 @@ alter table responses enable row level security;
 -- Organizations: coordinator can read/write their own org
 create policy "Coordinators manage their org"
   on organizations for all
-  using (
-    id in (
-      select organization_id from cohorts where created_by = auth.uid()
-    )
-  );
+  using (created_by = auth.uid())
+  with check (created_by = auth.uid());
 
 -- Cohorts: coordinator can read/write cohorts they created
 create policy "Coordinators manage their cohorts"
