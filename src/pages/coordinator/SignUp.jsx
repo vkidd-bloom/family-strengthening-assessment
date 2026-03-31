@@ -31,7 +31,7 @@ export default function SignUp() {
     // Create the organization record linked to the new user
     const { error: orgError } = await supabase
       .from("organizations")
-      .insert({ name: agencyName.trim() });
+      .insert({ name: agencyName.trim(), created_by: data.user.id });
 
     if (orgError) {
       setError("Account created, but we couldn't save your agency name. Please contact support.");
