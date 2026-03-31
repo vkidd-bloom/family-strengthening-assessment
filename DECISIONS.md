@@ -19,3 +19,11 @@ Decisions made during the initial build that should be revisited before launch o
 **Revisit:** Before launch, decide whether to enable email confirmation for security and to verify coordinator email addresses are valid. Consider the tradeoff between friction and data quality.
 
 ---
+
+## Respondent Link — One Per Cohort
+
+**Current:** A single shareable link is generated per cohort. All respondents use the same link — no individual unique links.
+**Decision:** Keeps distribution simple. Coordinators copy one link and share it however they like (email, Slack, etc.).
+**Revisit:** If there's a future need to track which specific individuals responded (e.g. to send reminders or prevent duplicate submissions), individual links would be needed. For now, respondents are fully anonymous and the shared link model is intentional.
+
+---
