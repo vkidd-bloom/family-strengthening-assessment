@@ -3,8 +3,9 @@ import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
 import "../../styles/global.css";
 
-export default function Login() {
+export default function SignUp() {
   const navigate = useNavigate();
+  const [agencyName, setAgencyName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -15,15 +16,30 @@ export default function Login() {
     setError(null);
     setLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    // Create the auth account
+    const { data, error: signUpError } = await supabase.auth.signUp({
+      email,
+      password,
+    });
 
-    if (error) {
-      // Intentionally vague to avoid confirming whether an email address exists.
-      setError("Incorrect email or password. Please try again.");
+    if (signUpError) {
+      setError(signUpError.message);
       setLoading(false);
-    } else {
-      navigate("/dashboard");
+      return;
     }
+
+    // Create the organization record linked to the new user
+    const { error: orgError } = await supabase
+      .from("organizations")
+      .insert({ name: agencyName.trim() });
+
+    if (orgError) {
+      setError("Account created, but we couldn't save your agency name. Please contact support.");
+      setLoading(false);
+      return;
+    }
+
+    navigate("/dashboard");
   }
 
   return (
@@ -42,10 +58,10 @@ export default function Login() {
         <div className="container container--narrow" style={{ paddingTop: "var(--space-12)", paddingBottom: "var(--space-16)" }}>
           <div className="card" style={{ maxWidth: "480px", margin: "0 auto" }}>
             <h2 style={{ fontSize: "var(--font-size-2xl)", marginBottom: "var(--space-2)" }}>
-              Coordinator sign in
+              Create a coordinator account
             </h2>
             <p style={{ color: "var(--color-text-secondary)", marginBottom: "var(--space-8)" }}>
-              Sign in to manage your assessment cohorts and view results.
+              Set up your account to create assessments and view results for your agency.
             </p>
 
             {error && (
@@ -55,6 +71,20 @@ export default function Login() {
             )}
 
             <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "var(--space-5)" }}>
+              <div className="form-group">
+                <label htmlFor="agency-name" className="form-label">Agency name</label>
+                <input
+                  id="agency-name"
+                  type="text"
+                  className="form-input"
+                  value={agencyName}
+                  onChange={(e) => setAgencyName(e.target.value)}
+                  autoComplete="organization"
+                  required
+                  aria-required="true"
+                />
+              </div>
+
               <div className="form-group">
                 <label htmlFor="email" className="form-label">Email address</label>
                 <input
@@ -77,10 +107,12 @@ export default function Login() {
                   className="form-input"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  autoComplete="current-password"
+                  autoComplete="new-password"
                   required
                   aria-required="true"
+                  minLength={8}
                 />
+                <span className="form-hint">Minimum 8 characters</span>
               </div>
 
               <button
@@ -88,13 +120,13 @@ export default function Login() {
                 className="btn btn--primary btn--full-width"
                 disabled={loading}
               >
-                {loading ? "Signing in…" : "Sign in"}
+                {loading ? "Creating account…" : "Create account"}
               </button>
             </form>
 
             <p style={{ marginTop: "var(--space-6)", textAlign: "center", fontSize: "var(--font-size-sm)", color: "var(--color-text-secondary)" }}>
-              Don't have an account?{" "}
-              <Link to="/signup">Create one</Link>
+              Already have an account?{" "}
+              <Link to="/login">Sign in</Link>
             </p>
           </div>
         </div>
