@@ -84,6 +84,11 @@ export default function Assessment() {
     setAnswers((prev) => ({ ...prev, [questionId]: value }));
   }
 
+  function advanceStep(nextStep) {
+    setStep(nextStep);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   function currentTheme() {
     return THEMES[step - 1];
   }
@@ -202,7 +207,7 @@ export default function Assessment() {
               <button
                 className="btn btn--primary"
                 style={{ marginTop: "var(--space-8)" }}
-                onClick={() => setStep(1)}
+                onClick={() => advanceStep(1)}
               >
                 Start assessment
               </button>
@@ -296,7 +301,7 @@ export default function Assessment() {
           <div style={{ display: "flex", justifyContent: "space-between", marginTop: "var(--space-8)", gap: "var(--space-4)" }}>
             <button
               className="btn btn--secondary"
-              onClick={() => setStep((s) => s - 1)}
+              onClick={() => advanceStep(step - 1)}
             >
               Back
             </button>
@@ -312,7 +317,7 @@ export default function Assessment() {
             ) : (
               <button
                 className="btn btn--primary"
-                onClick={() => setStep((s) => s + 1)}
+                onClick={() => advanceStep(step + 1)}
                 disabled={!canAdvance()}
               >
                 Next
