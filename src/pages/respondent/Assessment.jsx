@@ -80,13 +80,17 @@ export default function Assessment() {
     fetchCohort();
   }, [token]);
 
+  // Scroll to top after each step change, once new content has rendered
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [step]);
+
   function handleAnswer(questionId, value) {
     setAnswers((prev) => ({ ...prev, [questionId]: value }));
   }
 
   function advanceStep(nextStep) {
     setStep(nextStep);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function currentTheme() {
