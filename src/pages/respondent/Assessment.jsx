@@ -16,6 +16,16 @@ import { supabase } from "../../lib/supabase";
 import { THEMES } from "../../assessment_config.js";
 import "../../styles/global.css";
 
+// Maps scenario option value (1, 2, 3) to maturity level colors for the left border accent.
+// Value 1 = Getting Started, 2 = Building Momentum, 3 = Leading the Way.
+// Note: color-coding options by maturity level may influence self-selection.
+// See DECISIONS.md for the full tradeoff discussion.
+const OPTION_LEVEL_COLORS = {
+  1: { border: "var(--color-getting-started-badge)",  bg: "var(--color-getting-started-bg)" },
+  2: { border: "var(--color-building-momentum-badge)", bg: "var(--color-building-momentum-bg)" },
+  3: { border: "var(--color-leading-the-way-badge)",   bg: "var(--color-leading-the-way-bg)" },
+};
+
 // Placeholder role options — replace with final values when confirmed
 const ROLE_OPTIONS = [
   "Line Staff / Caseworker",
@@ -145,7 +155,7 @@ export default function Assessment() {
       <>
         <div className="page-header">
           <div className="container container--narrow">
-            <h1 style={{ fontSize: "var(--font-size-2xl)" }}>Family Strengthening Self-Assessment</h1>
+            <h1 style={{ fontSize: "var(--font-size-2xl)" }}>Family Strengthening Assessment</h1>
           </div>
         </div>
         <main>
@@ -260,6 +270,7 @@ export default function Assessment() {
                   <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
                     {question.options.map((option) => {
                       const isSelected = answers[question.id] === option.value;
+                      const levelColor = OPTION_LEVEL_COLORS[option.value];
                       return (
                         <label
                           key={option.value}
@@ -268,9 +279,11 @@ export default function Assessment() {
                             gap: "var(--space-3)",
                             alignItems: "flex-start",
                             padding: "var(--space-4)",
-                            border: `2px solid ${isSelected ? "var(--color-primary)" : "var(--color-border)"}`,
+                            paddingLeft: "var(--space-3)",
+                            border: `1.5px solid ${isSelected ? levelColor.border : "var(--color-border)"}`,
+                            borderLeft: `4px solid ${levelColor.border}`,
                             borderRadius: "var(--border-radius-md)",
-                            background: isSelected ? "var(--color-primary-light)" : "var(--color-bg)",
+                            background: isSelected ? levelColor.bg : "var(--color-bg)",
                             cursor: "pointer",
                             transition: "border-color var(--transition-fast), background var(--transition-fast)",
                           }}
@@ -281,7 +294,7 @@ export default function Assessment() {
                             value={option.value}
                             checked={isSelected}
                             onChange={() => handleAnswer(question.id, option.value)}
-                            style={{ marginTop: "3px", accentColor: "var(--color-primary)", flexShrink: 0 }}
+                            style={{ marginTop: "3px", accentColor: levelColor.border, flexShrink: 0 }}
                           />
                           <span style={{ lineHeight: "var(--line-height-relaxed)", fontSize: "var(--font-size-sm)" }}>
                             {option.text}
@@ -341,7 +354,7 @@ function AssessmentHeader({ cohortLabel }) {
     <div className="page-header">
       <div className="container container--narrow">
         <p style={{ fontSize: "var(--font-size-sm)", color: "rgba(255,255,255,0.75)", marginBottom: "var(--space-1)" }}>
-          Family Strengthening Self-Assessment
+          Family Strengthening Assessment
         </p>
         <h1 style={{ fontSize: "var(--font-size-2xl)", fontWeight: "var(--font-weight-bold)" }}>
           {cohortLabel}

@@ -20,6 +20,14 @@ Decisions made during the initial build that should be revisited before launch o
 
 ---
 
+## Answer Option Colors in Respondent Flow
+
+**Current:** Each answer option is color-coded by maturity level (purple = Getting Started, teal = Building Momentum, green = Leading the Way) using a colored left border.
+**Decision:** Color coding matches the branding and helps respondents visually connect options to maturity levels.
+**Revisit:** Respondents who recognize the color pattern may self-select toward "better" colors rather than answering honestly. Consider whether to remove colors, randomize option order, or hide color until after submission in future iterations.
+
+---
+
 ## Results — Response Distribution
 
 **Current:** Response distribution (how many respondents chose each option per question) is not shown.

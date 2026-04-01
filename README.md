@@ -1,4 +1,4 @@
-# Family Strengthening Self-Assessment Tool
+# Family Strengthening Assessment Tool
 
 A web-based organizational maturity assessment for child welfare agencies. Agencies use it to assess where they stand across four themes related to building a family strengthening culture. Multiple staff members complete the assessment anonymously, and their results are aggregated and presented to a coordinator.
 

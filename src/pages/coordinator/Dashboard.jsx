@@ -43,7 +43,7 @@ export default function Dashboard() {
       <div className="page-header">
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "var(--space-4)" }}>
           <h1 style={{ fontSize: "var(--font-size-xl)", fontWeight: "var(--font-weight-bold)" }}>
-            Family Strengthening Self-Assessment
+            Family Strengthening Assessment
           </h1>
           <button
             onClick={handleSignOut}
