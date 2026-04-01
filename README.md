@@ -80,7 +80,7 @@ Each theme has scenario-based questions with three response options correspondin
 
 ## Setting up your own instance
 
-You'll need accounts with [GitHub](https://github.com), [Supabase](https://supabase.com), and [Vercel](https://vercel.com). All have free tiers that are sufficient for this project.
+You'll need accounts with [GitHub](https://github.com), [Supabase](https://supabase.com), and [Vercel](https://vercel.com). All have free tiers that are sufficient for small to moderate usage — running pilots, testing with a handful of agencies, or ongoing use within a single organization. You're unlikely to hit limits unless you're running many simultaneous cohorts across a large number of agencies, storing a very high volume of responses, or receiving significant web traffic. If you're planning to scale beyond that, review the paid plans for Supabase (database/auth) and Vercel (hosting) before going live.
 
 ### 1. Fork and clone the repository
 
@@ -137,7 +137,7 @@ The respondent flow includes an optional unit/team dropdown. The placeholder opt
 ## Contributing
 
 Contributions are welcome. If you're a non-developer, the most valuable contributions are:
-- Feedback on the assessment instrument (edit `src/assessment_config.js`)
+- Feedback on the assessment instrument — please direct this to [prevention@bloomworks.digital](mailto:prevention@bloomworks.digital) rather than opening a GitHub issue, as changes to the instrument go through a review process with the Bloom Works team
 - Copywriting improvements
 - Accessibility issues you've noticed
 
