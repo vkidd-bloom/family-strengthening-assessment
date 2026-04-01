@@ -20,6 +20,22 @@ Decisions made during the initial build that should be revisited before launch o
 
 ---
 
+## Results — Response Distribution
+
+**Current:** Response distribution (how many respondents chose each option per question) is not shown.
+**Decision:** Keeps the results view focused on maturity level and action items. Reduces complexity for the initial build.
+**Revisit:** Distribution data could help coordinators spot disagreement or outlier teams. Consider adding a per-question breakdown or a simple chart once the core results view is validated with real users.
+
+---
+
+## Results Page Layout
+
+**Current:** Results are shown one theme at a time, with navigation between themes.
+**Decision:** Keeps each theme focused and avoids an overwhelming wall of information.
+**Revisit:** A single scrollable page may be easier to print or share. Consider once real users have interacted with the results view.
+
+---
+
 ## Respondent Link — One Per Cohort
 
 **Current:** A single shareable link is generated per cohort. All respondents use the same link — no individual unique links.
