@@ -316,7 +316,7 @@ function ResultsHeader({ cohortLabel }) {
     <div className="page-header">
       <div className="container container--narrow">
         <p style={{ fontSize: "var(--font-size-sm)", color: "rgba(255,255,255,0.75)", marginBottom: "var(--space-1)" }}>
-          Family Strengthening Self-Assessment
+          Family Strengthening Assessment
         </p>
         <h1 style={{ fontSize: "var(--font-size-2xl)", fontWeight: "var(--font-weight-bold)" }}>
           {cohortLabel ? `${cohortLabel} — Results` : "Results"}

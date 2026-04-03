@@ -49,7 +49,7 @@ export default function SignUp() {
       <div className="page-header">
         <div className="container container--narrow">
           <h1 style={{ fontSize: "var(--font-size-2xl)", fontWeight: "var(--font-weight-bold)" }}>
-            Family Strengthening Self-Assessment
+            Family Strengthening Assessment
           </h1>
         </div>
       </div>

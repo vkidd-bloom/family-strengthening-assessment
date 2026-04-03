@@ -32,9 +32,9 @@
   --color-getting-started-text:  #3B2A6E; /* Deep purple. Contrast on bg: 7.1:1 ✓ */
   --color-getting-started-badge: #3B2A6E; /* Badge fill */
 
-  --color-building-momentum-bg:    #E0F2F1; /* Pale teal */
-  --color-building-momentum-text:  #00514F; /* Deep teal. Contrast on bg: 6.8:1 ✓ */
-  --color-building-momentum-badge: #00514F;
+  --color-building-momentum-bg:    #FFF7ED; /* Pale orange */
+  --color-building-momentum-text:  #C2410C; /* Dark orange. Contrast on bg: 5.2:1 ✓ */
+  --color-building-momentum-badge: #C2410C;
 
   --color-leading-the-way-bg:    #E6F0EA; /* Pale green */
   --color-leading-the-way-text:  #1B3D2F; /* Dark forest green. Contrast on bg: 7.4:1 ✓ */

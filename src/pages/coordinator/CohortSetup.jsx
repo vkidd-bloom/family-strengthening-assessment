@@ -69,7 +69,7 @@ export default function CohortSetup() {
         <div className="page-header">
           <div className="container">
             <h1 style={{ fontSize: "var(--font-size-xl)", fontWeight: "var(--font-weight-bold)" }}>
-              Family Strengthening Self-Assessment
+              Family Strengthening Assessment
             </h1>
           </div>
         </div>
@@ -125,7 +125,7 @@ export default function CohortSetup() {
       <div className="page-header">
         <div className="container">
           <h1 style={{ fontSize: "var(--font-size-xl)", fontWeight: "var(--font-weight-bold)" }}>
-            Family Strengthening Self-Assessment
+            Family Strengthening Assessment
           </h1>
         </div>
       </div>
